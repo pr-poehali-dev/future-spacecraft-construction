@@ -3,7 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, Suspense } from "react";
+import SpaceShip3D from "@/components/SpaceShip3D";
+import Timeline from "@/components/Timeline";
+import CounterStats from "@/components/CounterStats";
 
 const Index = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -70,6 +73,7 @@ const Index = () => {
               <a href="#home" className="hover:text-primary transition-colors">Главная</a>
               <a href="#tech" className="hover:text-primary transition-colors">Технологии</a>
               <a href="#projects" className="hover:text-primary transition-colors">Проекты</a>
+              <a href="#timeline" className="hover:text-primary transition-colors">История</a>
               <a href="#contact" className="hover:text-primary transition-colors">Контакты</a>
             </div>
           </div>
@@ -99,15 +103,25 @@ const Index = () => {
               </div>
             </div>
             <div className="animate-slide-in-right">
-              <div className="relative animate-float">
-                <img 
-                  src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/4ac3bdb5-4345-46a5-ad7e-21231f75ae1f.jpg"
-                  alt="Spacecraft"
-                  className="rounded-2xl glow-card w-full"
-                />
-              </div>
+              <Suspense fallback={<div className="w-full h-[500px] rounded-2xl bg-muted/30 animate-pulse" />}>
+                <SpaceShip3D />
+              </Suspense>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
+              Наши достижения
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              Цифры, которые вдохновляют на покорение космоса
+            </p>
+          </div>
+          <CounterStats />
         </div>
       </section>
 
@@ -145,7 +159,21 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="projects" className="py-20 px-6">
+      <section className="py-20 px-6">
+        <div className="container mx-auto">
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
+              История развития
+            </h2>
+            <p className="text-xl text-muted-foreground">
+              От идеи до покорения космоса
+            </p>
+          </div>
+          <Timeline />
+        </div>
+      </section>
+
+      <section id="projects" className="py-20 px-6 bg-muted/30">
         <div className="container mx-auto">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
