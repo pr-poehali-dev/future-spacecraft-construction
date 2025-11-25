@@ -5,7 +5,6 @@ import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
 import Timeline from "@/components/Timeline";
-import CounterStats from "@/components/CounterStats";
 
 const Index = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -112,20 +111,6 @@ const Index = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="py-20 px-6">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
-              Наши достижения
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Цифры, которые вдохновляют на покорение космоса
-            </p>
-          </div>
-          <CounterStats />
         </div>
       </section>
 
