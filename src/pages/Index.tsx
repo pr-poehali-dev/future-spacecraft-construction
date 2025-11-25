@@ -3,8 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
-import { useState, Suspense } from "react";
-import SpaceShip3D from "@/components/SpaceShip3D";
+import { useState } from "react";
 import Timeline from "@/components/Timeline";
 import CounterStats from "@/components/CounterStats";
 
@@ -103,9 +102,14 @@ const Index = () => {
               </div>
             </div>
             <div className="animate-slide-in-right">
-              <Suspense fallback={<div className="w-full h-[500px] rounded-2xl bg-muted/30 animate-pulse" />}>
-                <SpaceShip3D />
-              </Suspense>
+              <div className="relative animate-float">
+                <img 
+                  src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/4ac3bdb5-4345-46a5-ad7e-21231f75ae1f.jpg"
+                  alt="Spacecraft"
+                  className="rounded-2xl glow-card w-full"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-purple-500/20 rounded-2xl"></div>
+              </div>
             </div>
           </div>
         </div>
