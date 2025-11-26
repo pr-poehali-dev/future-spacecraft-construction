@@ -46,6 +46,30 @@ const StellarVoyager = () => {
             </div>
           </div>
 
+          <Card className="glow-card mb-8">
+            <CardHeader>
+              <CardTitle className="text-3xl">Галерея</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/c6352cdb-dbc5-4b45-839a-63d08c8e8942.jpg"
+                    alt="Stellar Voyager в космосе"
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/ad494491-d7be-4fd1-993c-75b24f2d43a2.jpg"
+                    alt="Кокпит корабля"
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <div className="grid gap-8">
             <Card className="glow-card">
               <CardHeader>

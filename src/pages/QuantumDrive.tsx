@@ -46,6 +46,30 @@ const QuantumDrive = () => {
             </div>
           </div>
 
+          <Card className="glow-card mb-8">
+            <CardHeader>
+              <CardTitle className="text-3xl">Галерея</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/546aaca0-8f06-42be-9c4f-d3c35b85c4e7.jpg"
+                    alt="Квантовый двигатель"
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/08cb5ca1-eafc-48c9-afc2-1718b341c061.jpg"
+                    alt="Квантовый реактор"
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <div className="grid gap-8">
             <Card className="glow-card">
               <CardHeader>

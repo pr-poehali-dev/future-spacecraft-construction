@@ -46,6 +46,30 @@ const OrbitalConstructor = () => {
             </div>
           </div>
 
+          <Card className="glow-card mb-8">
+            <CardHeader>
+              <CardTitle className="text-3xl">Галерея</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/824d87b3-d650-4df2-8a0b-92843d5e5680.jpg"
+                    alt="Орбитальная станция"
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="rounded-lg overflow-hidden">
+                  <img 
+                    src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/d4d748fe-d736-4ed3-af29-2a1ceb1831d3.jpg"
+                    alt="Роботы-конструкторы"
+                    className="w-full h-[300px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <div className="grid gap-8">
             <Card className="glow-card">
               <CardHeader>
