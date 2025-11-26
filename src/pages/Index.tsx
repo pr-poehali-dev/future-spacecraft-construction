@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Timeline from "@/components/Timeline";
 
 const Index = () => {
@@ -28,22 +29,26 @@ const Index = () => {
     {
       icon: "Rocket",
       title: "Квантовые двигатели",
-      description: "Революционная система движения на основе квантовой физики для межзвёздных перелётов"
+      description: "Революционная система движения на основе квантовой физики для межзвёздных перелётов",
+      link: "/quantum-engine"
     },
     {
       icon: "Zap",
       title: "Энергетический щит",
-      description: "Защита нового поколения от космической радиации и микрометеоритов"
+      description: "Защита нового поколения от космической радиации и микрометеоритов",
+      link: "/energy-shield"
     },
     {
       icon: "Cpu",
       title: "ИИ-навигация",
-      description: "Автономная система управления на базе искусственного интеллекта"
+      description: "Автономная система управления на базе искусственного интеллекта",
+      link: "/ai-navigation"
     },
     {
       icon: "Atom",
       title: "Термоядерный реактор",
-      description: "Компактный источник энергии мощностью 10 ТВт для длительных миссий"
+      description: "Компактный источник энергии мощностью 10 ТВт для длительных миссий",
+      link: "/fusion-reactor"
     }
   ];
 
@@ -189,23 +194,24 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {technologies.map((tech, index) => (
-              <Card 
-                key={index} 
-                className="glow-card hover:scale-105 transition-transform duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardHeader>
-                  <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
-                    <Icon name={tech.icon as any} className="text-primary" size={32} />
-                  </div>
-                  <CardTitle className="text-xl">{tech.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {tech.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+              <Link key={index} to={tech.link}>
+                <Card 
+                  className="glow-card hover:scale-105 transition-transform duration-300 animate-fade-in cursor-pointer h-full"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <CardHeader>
+                    <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                      <Icon name={tech.icon as any} className="text-primary" size={32} />
+                    </div>
+                    <CardTitle className="text-xl">{tech.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base">
+                      {tech.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
