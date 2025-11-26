@@ -3,12 +3,26 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Timeline from "@/components/Timeline";
 
 const Index = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const technologies = [
     {
@@ -311,6 +325,16 @@ const Index = () => {
           <p>© 2025 SpaceShip Corp. Все права защищены.</p>
         </div>
       </footer>
+
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 p-4 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full shadow-lg glow-card transition-all duration-300 hover:scale-110 z-50"
+          aria-label="Scroll to top"
+        >
+          <Icon name="ArrowUp" size={24} />
+        </button>
+      )}
     </div>
   );
 };
