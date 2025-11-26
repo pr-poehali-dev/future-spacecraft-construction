@@ -9,6 +9,9 @@ import QuantumEngine from "./pages/QuantumEngine";
 import EnergyShield from "./pages/EnergyShield";
 import AINavigation from "./pages/AINavigation";
 import FusionReactor from "./pages/FusionReactor";
+import StellarVoyager from "./pages/StellarVoyager";
+import QuantumDrive from "./pages/QuantumDrive";
+import OrbitalConstructor from "./pages/OrbitalConstructor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +28,9 @@ const App = () => (
           <Route path="/energy-shield" element={<EnergyShield />} />
           <Route path="/ai-navigation" element={<AINavigation />} />
           <Route path="/fusion-reactor" element={<FusionReactor />} />
+          <Route path="/stellar-voyager" element={<StellarVoyager />} />
+          <Route path="/quantum-drive" element={<QuantumDrive />} />
+          <Route path="/orbital-constructor" element={<OrbitalConstructor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

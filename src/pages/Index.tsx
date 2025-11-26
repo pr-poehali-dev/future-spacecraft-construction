@@ -57,19 +57,22 @@ const Index = () => {
       name: "Stellar Voyager",
       image: "https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/4ac3bdb5-4345-46a5-ad7e-21231f75ae1f.jpg",
       status: "В разработке",
-      description: "Многоцелевой исследовательский корабль для дальних космических миссий"
+      description: "Многоцелевой исследовательский корабль для дальних космических миссий",
+      link: "/stellar-voyager"
     },
     {
       name: "Quantum Drive System",
       image: "https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/15e77440-a8a7-4588-aec3-05071b97a5cd.jpg",
       status: "Тестирование",
-      description: "Прорывная двигательная установка следующего поколения"
+      description: "Прорывная двигательная установка следующего поколения",
+      link: "/quantum-drive"
     },
     {
       name: "Orbital Constructor",
       image: "https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/7d6b1de3-7b03-4def-9ab4-f5ee84a1160f.jpg",
       status: "Запущен",
-      description: "Автоматизированная платформа для сборки кораблей на орбите"
+      description: "Автоматизированная платформа для сборки кораблей на орбите",
+      link: "/orbital-constructor"
     }
   ];
 
@@ -243,32 +246,33 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {projects.map((project, index) => (
-              <Card 
-                key={index}
-                className="glow-card overflow-hidden group hover:scale-105 transition-transform duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.name}
-                    className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
-                      {project.status}
-                    </span>
+              <Link key={index} to={project.link}>
+                <Card 
+                  className="glow-card overflow-hidden group hover:scale-105 transition-transform duration-300 animate-fade-in cursor-pointer h-full"
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                >
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.name}
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 rounded-full bg-primary text-primary-foreground text-sm font-semibold">
+                        {project.status}
+                      </span>
+                    </div>
                   </div>
-                </div>
-                <CardHeader>
-                  <CardTitle className="text-2xl">{project.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">
-                    {project.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+                  <CardHeader>
+                    <CardTitle className="text-2xl">{project.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-base">
+                      {project.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </div>
