@@ -8,6 +8,7 @@ import Timeline from "@/components/Timeline";
 
 const Index = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const technologies = [
     {
@@ -74,8 +75,56 @@ const Index = () => {
               <a href="#timeline" className="hover:text-primary transition-colors">История</a>
               <a href="#contact" className="hover:text-primary transition-colors">Контакты</a>
             </div>
+            <button 
+              className="md:hidden" 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={28} />
+            </button>
           </div>
         </div>
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-border">
+            <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
+              <a 
+                href="#home" 
+                className="hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Главная
+              </a>
+              <a 
+                href="#tech" 
+                className="hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Технологии
+              </a>
+              <a 
+                href="#projects" 
+                className="hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Проекты
+              </a>
+              <a 
+                href="#timeline" 
+                className="hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                История
+              </a>
+              <a 
+                href="#contact" 
+                className="hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Контакты
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
 
       <section id="home" className="pt-32 pb-20 px-6">
