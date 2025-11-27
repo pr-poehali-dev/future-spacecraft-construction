@@ -35,6 +35,13 @@ const EnergyShield = () => {
             <p className="text-xl text-muted-foreground">
               Защита нового поколения от космической радиации и микрометеоритов
             </p>
+            <div className="rounded-2xl overflow-hidden glow-card mt-8">
+              <img 
+                src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/9b794a87-e0da-4aa8-9988-188c6bc6cfa8.jpg"
+                alt="Энергетический щит"
+                className="w-full h-[400px] object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid gap-8">

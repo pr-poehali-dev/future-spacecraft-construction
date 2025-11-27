@@ -35,6 +35,13 @@ const AINavigation = () => {
             <p className="text-xl text-muted-foreground">
               Автономная система управления на базе искусственного интеллекта
             </p>
+            <div className="rounded-2xl overflow-hidden glow-card mt-8">
+              <img 
+                src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/4300518c-f015-4155-b814-643ccdabe250.jpg"
+                alt="ИИ-навигация"
+                className="w-full h-[400px] object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid gap-8">
