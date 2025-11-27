@@ -35,6 +35,13 @@ const QuantumEngine = () => {
             <p className="text-xl text-muted-foreground">
               Революционная система движения на основе квантовой физики для межзвёздных перелётов
             </p>
+            <div className="rounded-2xl overflow-hidden glow-card mt-8">
+              <img 
+                src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/6f903cc8-e6af-43de-a305-96c0fcf8cbb1.jpg"
+                alt="Квантовые двигатели"
+                className="w-full h-[400px] object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid gap-8">
