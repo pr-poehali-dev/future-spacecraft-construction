@@ -13,6 +13,9 @@ import StellarVoyager from "./pages/StellarVoyager";
 import QuantumDrive from "./pages/QuantumDrive";
 import OrbitalConstructor from "./pages/OrbitalConstructor";
 import Articles from "./pages/Articles";
+import ArticleQuantumEntanglement from "./pages/ArticleQuantumEntanglement";
+import ArticleSpaceshipLife from "./pages/ArticleSpaceshipLife";
+import ArticleWarpDrive from "./pages/ArticleWarpDrive";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +36,9 @@ const App = () => (
           <Route path="/quantum-drive" element={<QuantumDrive />} />
           <Route path="/orbital-constructor" element={<OrbitalConstructor />} />
           <Route path="/articles" element={<Articles />} />
+          <Route path="/articles/quantum-entanglement" element={<ArticleQuantumEntanglement />} />
+          <Route path="/articles/spaceship-life" element={<ArticleSpaceshipLife />} />
+          <Route path="/articles/warp-drive" element={<ArticleWarpDrive />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

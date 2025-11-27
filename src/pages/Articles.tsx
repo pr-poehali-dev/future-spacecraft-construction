@@ -13,7 +13,8 @@ const Articles = () => {
       date: "15 ноября 2024",
       readTime: "8 мин",
       category: "Наука",
-      excerpt: "Квантовая запутанность — одно из самых загадочных явлений в физике. Учёные SpaceShip Corp исследуют возможность применения этого феномена для создания принципиально новых двигательных систем, способных преодолевать световые годы за считанные месяцы."
+      excerpt: "Квантовая запутанность — одно из самых загадочных явлений в физике. Учёные SpaceShip Corp исследуют возможность применения этого феномена для создания принципиально новых двигательных систем, способных преодолевать световые годы за считанные месяцы.",
+      link: "/articles/quantum-entanglement"
     },
     {
       id: 2,
@@ -23,7 +24,8 @@ const Articles = () => {
       date: "8 ноября 2024",
       readTime: "12 мин",
       category: "Технологии",
-      excerpt: "Путешествие к другим звёздам требует создания полностью автономных систем жизнеобеспечения. Наши инженеры разработали замкнутые экосистемы, способные поддерживать жизнь экипажа на протяжении десятилетий без внешней помощи."
+      excerpt: "Путешествие к другим звёздам требует создания полностью автономных систем жизнеобеспечения. Наши инженеры разработали замкнутые экосистемы, способные поддерживать жизнь экипажа на протяжении десятилетий без внешней помощи.",
+      link: "/articles/spaceship-life"
     },
     {
       id: 3,
@@ -33,7 +35,8 @@ const Articles = () => {
       date: "1 ноября 2024",
       readTime: "10 мин",
       category: "Исследования",
-      excerpt: "То, что когда-то казалось научной фантастикой, сегодня становится реальностью. Наша команда достигла значительного прогресса в создании рабочего прототипа варп-двигателя, основанного на теории Алькубьерре."
+      excerpt: "То, что когда-то казалось научной фантастикой, сегодня становится реальностью. Наша команда достигла значительного прогресса в создании рабочего прототипа варп-двигателя, основанного на теории Алькубьерре.",
+      link: "/articles/warp-drive"
     }
   ];
 
@@ -72,57 +75,58 @@ const Articles = () => {
 
           <div className="grid gap-8">
             {articles.map((article, index) => (
-              <Card 
-                key={article.id} 
-                className="glow-card overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="grid md:grid-cols-[400px_1fr] gap-6">
-                  <div className="relative h-[300px] md:h-auto overflow-hidden">
-                    <img 
-                      src={article.image} 
-                      alt={article.title}
-                      className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                  <div className="p-6 md:py-8">
-                    <div className="flex items-center gap-4 mb-4">
-                      <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold">
-                        {article.category}
-                      </span>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1">
-                          <Icon name="Calendar" size={16} />
-                          <span>{article.date}</span>
-                        </div>
-                        <div className="flex items-center gap-1">
-                          <Icon name="Clock" size={16} />
-                          <span>{article.readTime}</span>
+              <Link key={article.id} to={article.link}>
+                <Card 
+                  className="glow-card overflow-hidden hover:shadow-lg transition-all duration-300 animate-fade-in cursor-pointer"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <div className="grid md:grid-cols-[400px_1fr] gap-6">
+                    <div className="relative h-[300px] md:h-auto overflow-hidden">
+                      <img 
+                        src={article.image} 
+                        alt={article.title}
+                        className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-6 md:py-8">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold">
+                          {article.category}
+                        </span>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1">
+                            <Icon name="Calendar" size={16} />
+                            <span>{article.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Icon name="Clock" size={16} />
+                            <span>{article.readTime}</span>
+                          </div>
                         </div>
                       </div>
+                      
+                      <CardHeader className="p-0 mb-4">
+                        <CardTitle className="text-3xl mb-3 hover:text-primary transition-colors">
+                          {article.title}
+                        </CardTitle>
+                        <CardDescription className="text-base">
+                          {article.description}
+                        </CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent className="p-0">
+                        <p className="text-muted-foreground mb-6 leading-relaxed">
+                          {article.excerpt}
+                        </p>
+                        <Button className="group">
+                          Читать статью
+                          <Icon name="ArrowRight" size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </CardContent>
                     </div>
-                    
-                    <CardHeader className="p-0 mb-4">
-                      <CardTitle className="text-3xl mb-3 hover:text-primary transition-colors cursor-pointer">
-                        {article.title}
-                      </CardTitle>
-                      <CardDescription className="text-base">
-                        {article.description}
-                      </CardDescription>
-                    </CardHeader>
-                    
-                    <CardContent className="p-0">
-                      <p className="text-muted-foreground mb-6 leading-relaxed">
-                        {article.excerpt}
-                      </p>
-                      <Button className="group">
-                        Читать статью
-                        <Icon name="ArrowRight" size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </CardContent>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             ))}
           </div>
 
