@@ -7,23 +7,24 @@ const ArticleSpaceshipLife = () => {
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
-              <Icon name="Rocket" className="text-primary" size={32} />
-              <span className="text-2xl font-bold glow-text">SpaceShip Corp</span>
+              <Icon name="Rocket" className="text-primary" size={28} />
+              <span className="text-xl md:text-2xl font-bold glow-text">SpaceShip Corp</span>
             </Link>
             <Link to="/articles">
-              <Button variant="outline">
-                <Icon name="ArrowLeft" size={20} className="mr-2" />
-                К статьям
+              <Button variant="outline" size="sm" className="md:h-10">
+                <Icon name="ArrowLeft" size={18} className="mr-1 md:mr-2" />
+                <span className="hidden sm:inline">К статьям</span>
+                <span className="sm:hidden">Назад</span>
               </Button>
             </Link>
           </div>
         </div>
       </nav>
 
-      <article className="pt-32 pb-20 px-6">
+      <article className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="mb-12 animate-fade-in">
             <div className="flex items-center gap-4 mb-6 flex-wrap">
@@ -42,19 +43,19 @@ const ArticleSpaceshipLife = () => {
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 glow-text">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 glow-text leading-tight">
               Жизнь на борту межзвёздного корабля: вызовы и решения
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8">
               Обзор технологий жизнеобеспечения для длительных космических миссий
             </p>
 
-            <div className="rounded-2xl overflow-hidden glow-card mb-12">
+            <div className="rounded-xl md:rounded-2xl overflow-hidden glow-card mb-8 md:mb-12">
               <img 
                 src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/996c1afd-d7dc-43db-b6f5-608b09cc2d01.jpg"
                 alt="Жизнь на космическом корабле"
-                className="w-full h-[400px] md:h-[500px] object-cover"
+                className="w-full h-[250px] sm:h-[350px] md:h-[500px] object-cover"
               />
             </div>
           </div>
@@ -62,16 +63,16 @@ const ArticleSpaceshipLife = () => {
           <div className="prose prose-lg max-w-none">
             <Card className="glow-card mb-8">
               <CardContent className="pt-6">
-                <p className="text-lg leading-relaxed mb-6">
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Путешествие к другим звёздам требует создания полностью автономных систем жизнеобеспечения. Наши инженеры разработали замкнутые экосистемы, способные поддерживать жизнь экипажа на протяжении десятилетий без внешней помощи.
                 </p>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Вызов длительных миссий</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Вызов длительных миссий</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Межзвёздное путешествие — это не просто технологический вызов, это проверка на выживание для всей команды. Даже полёт к ближайшей звезде Проксима Центавра займёт от 5 до 20 лет в зависимости от типа двигателя. За это время экипаж должен:
                 </p>
 
-                <ul className="space-y-3 mb-6 text-lg">
+                <ul className="space-y-3 mb-6 text-base md:text-lg">
                   <li className="flex gap-3">
                     <Icon name="Wind" className="text-primary flex-shrink-0 mt-1" size={20} />
                     <span>Дышать чистым воздухом</span>
@@ -94,12 +95,12 @@ const ArticleSpaceshipLife = () => {
                   </li>
                 </ul>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Система производства воздуха</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Система производства воздуха</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Наша революционная биорегенеративная система объединяет технологии и природу. Вместо простой фильтрации CO₂, мы создали мини-экосистему внутри корабля:
                 </p>
 
-                <div className="bg-muted/30 p-6 rounded-lg mb-6">
+                <div className="bg-muted/30 p-4 md:p-6 rounded-lg mb-6">
                   <h3 className="text-xl font-bold mb-4">Ключевые компоненты:</h3>
                   <div className="space-y-4">
                     <div>
@@ -117,8 +118,8 @@ const ArticleSpaceshipLife = () => {
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Водоснабжение: замкнутый цикл</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Водоснабжение: замкнутый цикл</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Вода — самый ценный ресурс на борту. Невозможно взять с Земли запас воды на 20 лет для 50 человек — это тысячи тонн. Решение — полная переработка:
                 </p>
 
@@ -131,7 +132,7 @@ const ArticleSpaceshipLife = () => {
                   </p>
                 </div>
 
-                <p className="text-lg leading-relaxed mb-6">
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Вся вода на корабле проходит через многоступенчатую систему очистки:
                 </p>
 
@@ -143,12 +144,12 @@ const ArticleSpaceshipLife = () => {
                   <li><strong>Финальная УФ-обработка</strong> — гарантия стерильности</li>
                 </ol>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Питание: гидропонные фермы</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Питание: гидропонные фермы</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Корабль Stellar Voyager оснащён 6 гидропонными фермами общей площадью 300 м². Это позволяет выращивать:
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-6">
                   <div className="bg-muted/30 p-4 rounded-lg">
                     <Icon name="Carrot" className="text-primary mb-2" size={28} />
                     <p className="font-semibold mb-1">Овощи и зелень</p>
@@ -171,25 +172,25 @@ const ArticleSpaceshipLife = () => {
                   </div>
                 </div>
 
-                <p className="text-lg leading-relaxed mb-6">
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Свежие продукты покрывают около 60% рациона. Остальное — сублимированная еда, заготовленная на Земле, и синтетические протеины, производимые прямо на борту с использованием биореакторов.
                 </p>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Искусственная гравитация</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Искусственная гравитация</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Длительное пребывание в невесомости разрушительно для организма: атрофия мышц, потеря костной массы, проблемы с сердечно-сосудистой системой. Решение — вращающиеся секции корабля.
                 </p>
 
-                <p className="text-lg leading-relaxed mb-6">
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Жилые модули Stellar Voyager расположены на вращающемся кольце диаметром 200 метров. При скорости вращения 2 оборота в минуту создаётся центробежная сила, эквивалентная 1G земной гравитации. Экипаж живёт в привычных условиях, что критически важно для долгих миссий.
                 </p>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Психологический комфорт</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Психологический комфорт</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Технологии важны, но не менее важен комфорт команды. Годы в замкнутом пространстве — серьёзное испытание для психики. Наши решения:
                 </p>
 
-                <ul className="space-y-3 mb-6 text-lg">
+                <ul className="space-y-3 mb-6 text-base md:text-lg">
                   <li className="flex gap-3">
                     <Icon name="Users" className="text-primary flex-shrink-0 mt-1" size={20} />
                     <span><strong>Личные каюты:</strong> У каждого члена экипажа есть личное пространство площадью 12 м² с настраиваемым освещением и климатом</span>
@@ -212,12 +213,12 @@ const ArticleSpaceshipLife = () => {
                   </li>
                 </ul>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Медицинский блок</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Медицинский блок</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   На борту Stellar Voyager находится полноценная больница с операционной, томографом, рентгеном и лабораторией. Два врача и четыре медсестры обеспечивают круглосуточную помощь. В экстренных случаях доступна телемедицина — связь с Землёй с задержкой от нескольких минут до часов в зависимости от расстояния.
                 </p>
 
-                <div className="bg-muted/30 p-6 rounded-lg mb-6">
+                <div className="bg-muted/30 p-4 md:p-6 rounded-lg mb-6">
                   <h3 className="text-xl font-bold mb-4">Возможности медблока:</h3>
                   <div className="grid md:grid-cols-2 gap-3 text-sm">
                     <div className="flex items-center gap-2">
@@ -247,8 +248,8 @@ const ArticleSpaceshipLife = () => {
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Заключение</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Заключение</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Создание замкнутой экосистемы на борту космического корабля — это инженерный подвиг, требующий интеграции биологии, химии, физики и психологии. Stellar Voyager демонстрирует, что длительные межзвёздные миссии возможны не только технически, но и с точки зрения комфорта и безопасности экипажа.
                 </p>
 
@@ -258,7 +259,7 @@ const ArticleSpaceshipLife = () => {
               </CardContent>
             </Card>
 
-            <div className="flex gap-4 mt-12">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 md:mt-12">
               <Link to="/articles" className="flex-1">
                 <Button variant="outline" className="w-full">
                   <Icon name="ArrowLeft" size={20} className="mr-2" />

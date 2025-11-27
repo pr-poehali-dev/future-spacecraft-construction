@@ -7,23 +7,24 @@ const ArticleWarpDrive = () => {
   return (
     <div className="min-h-screen bg-background">
       <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
-        <div className="container mx-auto px-6 py-4">
+        <div className="container mx-auto px-4 md:px-6 py-3 md:py-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
-              <Icon name="Rocket" className="text-primary" size={32} />
-              <span className="text-2xl font-bold glow-text">SpaceShip Corp</span>
+              <Icon name="Rocket" className="text-primary" size={28} />
+              <span className="text-xl md:text-2xl font-bold glow-text">SpaceShip Corp</span>
             </Link>
             <Link to="/articles">
-              <Button variant="outline">
-                <Icon name="ArrowLeft" size={20} className="mr-2" />
-                К статьям
+              <Button variant="outline" size="sm" className="md:h-10">
+                <Icon name="ArrowLeft" size={18} className="mr-1 md:mr-2" />
+                <span className="hidden sm:inline">К статьям</span>
+                <span className="sm:hidden">Назад</span>
               </Button>
             </Link>
           </div>
         </div>
       </nav>
 
-      <article className="pt-32 pb-20 px-6">
+      <article className="pt-24 md:pt-32 pb-12 md:pb-20 px-4 md:px-6">
         <div className="container mx-auto max-w-4xl">
           <div className="mb-12 animate-fade-in">
             <div className="flex items-center gap-4 mb-6 flex-wrap">
@@ -42,19 +43,19 @@ const ArticleWarpDrive = () => {
               </div>
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 glow-text">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 glow-text leading-tight">
               Варп-двигатель: от теории к практике
             </h1>
 
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-lg md:text-xl text-muted-foreground mb-6 md:mb-8">
               Прогресс в разработке технологии искривления пространства-времени
             </p>
 
-            <div className="rounded-2xl overflow-hidden glow-card mb-12">
+            <div className="rounded-xl md:rounded-2xl overflow-hidden glow-card mb-8 md:mb-12">
               <img 
                 src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/234f5c7a-35e2-4e18-b915-e682b860d49c.jpg"
                 alt="Варп-двигатель"
-                className="w-full h-[400px] md:h-[500px] object-cover"
+                className="w-full h-[250px] sm:h-[350px] md:h-[500px] object-cover"
               />
             </div>
           </div>
@@ -62,12 +63,12 @@ const ArticleWarpDrive = () => {
           <div className="prose prose-lg max-w-none">
             <Card className="glow-card mb-8">
               <CardContent className="pt-6">
-                <p className="text-lg leading-relaxed mb-6">
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   То, что когда-то казалось научной фантастикой, сегодня становится реальностью. Наша команда достигла значительного прогресса в создании рабочего прототипа варп-двигателя, основанного на теории Алькубьерре.
                 </p>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">История идеи</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">История идеи</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Концепция варп-двигателя была предложена мексиканским физиком Мигелем Алькубьерре в 1994 году. Его революционная идея: вместо того чтобы разгонять корабль до сверхсветовой скорости (что запрещено теорией относительности), можно искривить само пространство-время вокруг корабля.
                 </p>
 
@@ -78,12 +79,12 @@ const ArticleWarpDrive = () => {
                   <p className="text-sm text-muted-foreground mt-2">— Профессор Михаил Громов, главный теоретик проекта</p>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Основной принцип</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Основной принцип</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Представьте муравья на листе бумаги. Чтобы добраться из точки А в точку Б, он должен пройти расстояние. Но что если согнуть лист так, чтобы точки соприкоснулись? Муравей окажется в точке Б мгновенно. Варп-двигатель делает примерно то же самое с пространством-временем.
                 </p>
 
-                <div className="bg-muted/30 p-6 rounded-lg mb-6">
+                <div className="bg-muted/30 p-4 md:p-6 rounded-lg mb-6">
                   <h3 className="text-xl font-bold mb-4">Три фазы работы варп-двигателя:</h3>
                   <div className="space-y-4">
                     <div>
@@ -110,13 +111,13 @@ const ArticleWarpDrive = () => {
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Главная проблема: экзотическая материя</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Главная проблема: экзотическая материя</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Оригинальная теория Алькубьерре требовала огромных количеств материи с отрицательной плотностью энергии — так называемой "экзотической материи". По первоначальным расчётам требовалась масса, эквивалентная массе Юпитера, преобразованная в чистую энергию. Это делало идею абсолютно нереализуемой.
                 </p>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Прорывы последних лет</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Прорывы последних лет</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   За последние 10 лет произошла серия важных открытий:
                 </p>
 
@@ -170,12 +171,12 @@ const ArticleWarpDrive = () => {
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Технические характеристики проекта</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Технические характеристики проекта</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Мы работаем над созданием прототипа варп-двигателя для беспилотного зонда массой 5 тонн:
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                <div className="grid sm:grid-cols-2 gap-3 md:gap-4 mb-6">
                   <div className="bg-muted/30 p-4 rounded-lg">
                     <Icon name="Gauge" className="text-primary mb-2" size={28} />
                     <p className="font-semibold mb-1">Целевая скорость</p>
@@ -198,8 +199,8 @@ const ArticleWarpDrive = () => {
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Текущие испытания</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Текущие испытания</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Наша команда проводит серию экспериментов в специальной лаборатории на орбитальной станции:
                 </p>
 
@@ -237,12 +238,12 @@ const ArticleWarpDrive = () => {
                   </div>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Вызовы и риски</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Вызовы и риски</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Несмотря на успехи, впереди множество нерешённых проблем:
                 </p>
 
-                <ul className="space-y-3 mb-6 text-lg">
+                <ul className="space-y-3 mb-6 text-base md:text-lg">
                   <li className="flex gap-3">
                     <Icon name="AlertTriangle" className="text-amber-500 flex-shrink-0 mt-1" size={20} />
                     <span><strong>Излучение Хокинга:</strong> При схлопывании варп-пузыря может высвобождаться огромное количество радиации, опасной для экипажа и систем корабля</span>
@@ -261,8 +262,8 @@ const ArticleWarpDrive = () => {
                   </li>
                 </ul>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Перспективы применения</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Перспективы применения</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Если мы успешно решим все технические проблемы, варп-двигатель откроет невероятные возможности:
                 </p>
 
@@ -275,8 +276,8 @@ const ArticleWarpDrive = () => {
                   </ul>
                 </div>
 
-                <h2 className="text-3xl font-bold mb-4 mt-8">Заключение</h2>
-                <p className="text-lg leading-relaxed mb-6">
+                <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 mt-6 md:mt-8">Заключение</h2>
+                <p className="text-base md:text-lg leading-relaxed mb-6">
                   Варп-двигатель — это не просто мечта фантастов, это реальная инженерная задача, над которой работают сотни учёных по всему миру. Мы в SpaceShip Corp верим, что в течение следующих 20-30 лет создадим действующий прототип.
                 </p>
 
@@ -286,7 +287,7 @@ const ArticleWarpDrive = () => {
               </CardContent>
             </Card>
 
-            <div className="flex gap-4 mt-12">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 md:mt-12">
               <Link to="/articles" className="flex-1">
                 <Button variant="outline" className="w-full">
                   <Icon name="ArrowLeft" size={20} className="mr-2" />
