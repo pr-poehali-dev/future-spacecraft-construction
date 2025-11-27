@@ -228,13 +228,13 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="timeline" className="py-20 px-6">
+      <section id="timeline" className="py-12 md:py-20 px-4 md:px-6">
         <div className="container mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 glow-text">
+          <div className="text-center mb-12 md:mb-16 animate-fade-in">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-4 glow-text">
               История развития
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               От идеи до покорения космоса
             </p>
           </div>
