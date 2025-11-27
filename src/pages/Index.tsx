@@ -95,6 +95,7 @@ const Index = () => {
               <a href="#tech" className="hover:text-primary transition-colors">Технологии</a>
               <a href="#projects" className="hover:text-primary transition-colors">Проекты</a>
               <a href="#timeline" className="hover:text-primary transition-colors">История</a>
+              <Link to="/articles" className="hover:text-primary transition-colors">Статьи</Link>
               <a href="#contact" className="hover:text-primary transition-colors">Контакты</a>
             </div>
             <button 
@@ -137,6 +138,13 @@ const Index = () => {
               >
                 История
               </a>
+              <Link 
+                to="/articles" 
+                className="hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Статьи
+              </Link>
               <a 
                 href="#contact" 
                 className="hover:text-primary transition-colors py-2"

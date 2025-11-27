@@ -12,6 +12,7 @@ import FusionReactor from "./pages/FusionReactor";
 import StellarVoyager from "./pages/StellarVoyager";
 import QuantumDrive from "./pages/QuantumDrive";
 import OrbitalConstructor from "./pages/OrbitalConstructor";
+import Articles from "./pages/Articles";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/stellar-voyager" element={<StellarVoyager />} />
           <Route path="/quantum-drive" element={<QuantumDrive />} />
           <Route path="/orbital-constructor" element={<OrbitalConstructor />} />
+          <Route path="/articles" element={<Articles />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
