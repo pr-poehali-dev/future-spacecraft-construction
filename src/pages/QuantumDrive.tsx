@@ -166,6 +166,13 @@ const QuantumDrive = () => {
                 <div className="space-y-6">
                   <div className="border-l-4 border-primary pl-4">
                     <h3 className="font-semibold text-xl mb-2">Квантовый генератор поля</h3>
+                    <div className="rounded-lg overflow-hidden mb-3">
+                      <img 
+                        src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/6f903cc8-e6af-43de-a305-96c0fcf8cbb1.jpg"
+                        alt="Квантовый генератор поля"
+                        className="w-full h-[250px] object-cover"
+                      />
+                    </div>
                     <p className="text-muted-foreground">
                       Сердце системы — генератор квантовых полей, создающий управляемые искривления метрики пространства-времени в радиусе действия двигателя
                     </p>
@@ -184,6 +191,13 @@ const QuantumDrive = () => {
                   </div>
                   <div className="border-l-4 border-primary pl-4">
                     <h3 className="font-semibold text-xl mb-2">ИИ-контроллер двигателя</h3>
+                    <div className="rounded-lg overflow-hidden mb-3">
+                      <img 
+                        src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/4300518c-f015-4155-b814-643ccdabe250.jpg"
+                        alt="ИИ-навигация"
+                        className="w-full h-[250px] object-cover"
+                      />
+                    </div>
                     <p className="text-muted-foreground">
                       Система искусственного интеллекта для управления миллиардами параметров квантового поля в реальном времени
                     </p>

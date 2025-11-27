@@ -35,6 +35,13 @@ const FusionReactor = () => {
             <p className="text-xl text-muted-foreground">
               Компактный источник энергии мощностью 10 ТВт для длительных миссий
             </p>
+            <div className="rounded-2xl overflow-hidden glow-card mt-8">
+              <img 
+                src="https://cdn.poehali.dev/projects/f092b6ec-5c0f-410b-bd08-760c94eff213/files/06478459-da30-4575-a451-394a8f02faec.jpg"
+                alt="Термоядерный реактор"
+                className="w-full h-[400px] object-cover"
+              />
+            </div>
           </div>
 
           <div className="grid gap-8">
