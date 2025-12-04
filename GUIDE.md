@@ -235,6 +235,252 @@ npm run dev
 4. **Меняйте по чуть-чуть** - сначала одно изменение, посмотрите результат, потом следующее
 5. **Спрашивайте Юру** - если что-то непонятно, просто опишите, что хотите сделать
 
+## 🔨 Создание новых компонентов
+
+### Простой компонент (без логики)
+
+Создайте файл `src/components/MyComponent.tsx`:
+
+```tsx
+interface MyComponentProps {
+  title: string;
+  description?: string;
+}
+
+export default function MyComponent({ title, description }: MyComponentProps) {
+  return (
+    <div className="p-6 bg-card rounded-lg border">
+      <h3 className="text-2xl font-bold mb-2">{title}</h3>
+      {description && <p className="text-muted-foreground">{description}</p>}
+    </div>
+  );
+}
+```
+
+**Использование:**
+```tsx
+import MyComponent from '@/components/MyComponent';
+
+<MyComponent title="Заголовок" description="Описание" />
+```
+
+### Компонент с состоянием (useState)
+
+Создайте файл `src/components/Counter.tsx`:
+
+```tsx
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div className="flex items-center gap-4">
+      <Button onClick={() => setCount(count - 1)}>-</Button>
+      <span className="text-2xl font-bold">{count}</span>
+      <Button onClick={() => setCount(count + 1)}>+</Button>
+    </div>
+  );
+}
+```
+
+### Компонент с иконками
+
+Создайте файл `src/components/FeatureCard.tsx`:
+
+```tsx
+import Icon from '@/components/ui/icon';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+interface FeatureCardProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+export default function FeatureCard({ icon, title, description }: FeatureCardProps) {
+  return (
+    <Card className="hover:shadow-lg transition-shadow">
+      <CardHeader>
+        <Icon name={icon} size={48} className="text-primary mb-4" />
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-muted-foreground">{description}</p>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+**Использование:**
+```tsx
+<FeatureCard 
+  icon="Rocket" 
+  title="Быстрая доставка" 
+  description="Доставка в любую точку галактики" 
+/>
+```
+
+### Компонент со списком (map)
+
+Создайте файл `src/components/TeamList.tsx`:
+
+```tsx
+import { Card, CardContent } from '@/components/ui/card';
+
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  avatar?: string;
+}
+
+interface TeamListProps {
+  members: TeamMember[];
+}
+
+export default function TeamList({ members }: TeamListProps) {
+  return (
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {members.map((member) => (
+        <Card key={member.id}>
+          <CardContent className="p-6">
+            {member.avatar && (
+              <img 
+                src={member.avatar} 
+                alt={member.name}
+                className="w-20 h-20 rounded-full mx-auto mb-4"
+              />
+            )}
+            <h3 className="text-xl font-bold text-center">{member.name}</h3>
+            <p className="text-muted-foreground text-center">{member.role}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+```
+
+**Использование:**
+```tsx
+const team = [
+  { id: 1, name: "Иван Петров", role: "Капитан" },
+  { id: 2, name: "Мария Сидорова", role: "Инженер" },
+];
+
+<TeamList members={team} />
+```
+
+### Компонент с анимацией (Framer Motion)
+
+Создайте файл `src/components/AnimatedCard.tsx`:
+
+```tsx
+import { motion } from 'framer-motion';
+import { Card, CardContent } from '@/components/ui/card';
+
+interface AnimatedCardProps {
+  title: string;
+  delay?: number;
+}
+
+export default function AnimatedCard({ title, delay = 0 }: AnimatedCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
+    >
+      <Card className="hover:scale-105 transition-transform">
+        <CardContent className="p-6">
+          <h3 className="text-xl font-bold">{title}</h3>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+}
+```
+
+**Использование:**
+```tsx
+<AnimatedCard title="Карточка 1" delay={0} />
+<AnimatedCard title="Карточка 2" delay={0.1} />
+<AnimatedCard title="Карточка 3" delay={0.2} />
+```
+
+### Компонент формы
+
+Создайте файл `src/components/ContactForm.tsx`:
+
+```tsx
+import { useState, FormEvent } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+export default function ContactForm() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log({ name, email, message });
+    alert('Форма отправлена!');
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+      <div>
+        <label className="block text-sm font-medium mb-2">Имя</label>
+        <Input 
+          value={name} 
+          onChange={(e) => setName(e.target.value)}
+          required 
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-medium mb-2">Email</label>
+        <Input 
+          type="email"
+          value={email} 
+          onChange={(e) => setEmail(e.target.value)}
+          required 
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-medium mb-2">Сообщение</label>
+        <textarea 
+          value={message} 
+          onChange={(e) => setMessage(e.target.value)}
+          className="w-full p-3 border rounded-md"
+          rows={4}
+          required 
+        />
+      </div>
+      
+      <Button type="submit" className="w-full">
+        Отправить
+      </Button>
+    </form>
+  );
+}
+```
+
+### Советы по компонентам:
+
+1. **Именование файлов**: Всегда PascalCase (`MyComponent.tsx`)
+2. **Props типизация**: Используйте TypeScript интерфейсы
+3. **Переиспользование**: Создавайте маленькие, переиспользуемые компоненты
+4. **UI компоненты**: Используйте готовые из `@/components/ui/`
+5. **Импорт алиас**: Используйте `@/` вместо относительных путей
+6. **Responsive дизайн**: Используйте `md:`, `lg:` префиксы Tailwind
+7. **Иконки**: Всегда через `<Icon name="..." />` компонент
+
 ---
 
 Создано с помощью [poehali.dev](https://poehali.dev) - разработка сайтов через русский язык ✨
