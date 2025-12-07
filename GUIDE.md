@@ -481,6 +481,377 @@ export default function ContactForm() {
 6. **Responsive дизайн**: Используйте `md:`, `lg:` префиксы Tailwind
 7. **Иконки**: Всегда через `<Icon name="..." />` компонент
 
+## 🌐 Работа с API и загрузка данных
+
+### Загрузка данных при монтировании (useEffect)
+
+Создайте файл `src/components/UsersList.tsx`:
+
+```tsx
+import { useState, useEffect } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+export default function UsersList() {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => {
+        setUsers(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError('Ошибка загрузки данных');
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <div className="text-center">Загрузка...</div>;
+  if (error) return <div className="text-red-500">{error}</div>;
+
+  return (
+    <div className="grid gap-4">
+      {users.map(user => (
+        <Card key={user.id}>
+          <CardContent className="p-4">
+            <h3 className="font-bold">{user.name}</h3>
+            <p className="text-muted-foreground">{user.email}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+```
+
+### Отправка данных на сервер (POST запрос)
+
+Создайте файл `src/components/CreatePostForm.tsx`:
+
+```tsx
+import { useState, FormEvent } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+
+export default function CreatePostForm() {
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title, body, userId: 1 }),
+      });
+
+      if (response.ok) {
+        setSuccess(true);
+        setTitle('');
+        setBody('');
+        setTimeout(() => setSuccess(false), 3000);
+      }
+    } catch (error) {
+      alert('Ошибка при отправке');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+      {success && (
+        <div className="bg-green-100 text-green-800 p-3 rounded">
+          Пост успешно создан!
+        </div>
+      )}
+      
+      <div>
+        <label className="block text-sm font-medium mb-2">Заголовок</label>
+        <Input 
+          value={title} 
+          onChange={(e) => setTitle(e.target.value)}
+          disabled={loading}
+          required 
+        />
+      </div>
+      
+      <div>
+        <label className="block text-sm font-medium mb-2">Текст</label>
+        <textarea 
+          value={body} 
+          onChange={(e) => setBody(e.target.value)}
+          className="w-full p-3 border rounded-md"
+          rows={4}
+          disabled={loading}
+          required 
+        />
+      </div>
+      
+      <Button type="submit" disabled={loading} className="w-full">
+        {loading ? 'Отправка...' : 'Создать пост'}
+      </Button>
+    </form>
+  );
+}
+```
+
+### Поиск с задержкой (debounce)
+
+Создайте файл `src/components/SearchUsers.tsx`:
+
+```tsx
+import { useState, useEffect } from 'react';
+import { Input } from '@/components/ui/input';
+import { Card, CardContent } from '@/components/ui/card';
+
+interface User {
+  id: number;
+  name: string;
+  username: string;
+}
+
+export default function SearchUsers() {
+  const [query, setQuery] = useState('');
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (!query) {
+      setUsers([]);
+      return;
+    }
+
+    setLoading(true);
+    const timer = setTimeout(() => {
+      fetch(`https://jsonplaceholder.typicode.com/users?name_like=${query}`)
+        .then(response => response.json())
+        .then(data => {
+          setUsers(data);
+          setLoading(false);
+        });
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  return (
+    <div className="max-w-md">
+      <Input 
+        placeholder="Поиск пользователей..." 
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      
+      {loading && <div className="mt-4 text-center">Поиск...</div>}
+      
+      <div className="mt-4 space-y-2">
+        {users.map(user => (
+          <Card key={user.id}>
+            <CardContent className="p-3">
+              <div className="font-bold">{user.name}</div>
+              <div className="text-sm text-muted-foreground">@{user.username}</div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+### Работа с Backend функциями poehali.dev
+
+Если вы создали backend функцию в poehali.dev (папка `/backend`), вот как её использовать:
+
+```tsx
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+
+export default function CallBackendExample() {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(false);
+
+  const callBackend = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch('URL_ИЗ_func2url.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-User-Id': 'user123',
+        },
+        body: JSON.stringify({ message: 'Привет!' }),
+      });
+      
+      const result = await response.json();
+      setData(result);
+    } catch (error) {
+      console.error('Ошибка:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <Button onClick={callBackend} disabled={loading}>
+        {loading ? 'Загрузка...' : 'Вызвать функцию'}
+      </Button>
+      {data && <pre className="mt-4 p-4 bg-muted rounded">{JSON.stringify(data, null, 2)}</pre>}
+    </div>
+  );
+}
+```
+
+**Где взять URL функции:**
+1. Откройте файл `/backend/func2url.json` в корне проекта
+2. Найдите вашу функцию и её URL
+3. Используйте этот URL в `fetch()`
+
+### Пагинация данных
+
+Создайте файл `src/components/PaginatedList.tsx`:
+
+```tsx
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+export default function PaginatedList() {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const postsPerPage = 5;
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${postsPerPage}`)
+      .then(response => response.json())
+      .then(data => {
+        setPosts(data);
+        setLoading(false);
+      });
+  }, [page]);
+
+  return (
+    <div>
+      {loading ? (
+        <div className="text-center">Загрузка...</div>
+      ) : (
+        <div className="space-y-4">
+          {posts.map(post => (
+            <Card key={post.id}>
+              <CardContent className="p-4">
+                <h3 className="font-bold mb-2">{post.title}</h3>
+                <p className="text-muted-foreground">{post.body}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      )}
+
+      <div className="flex gap-2 justify-center mt-6">
+        <Button 
+          onClick={() => setPage(p => Math.max(1, p - 1))}
+          disabled={page === 1 || loading}
+        >
+          Назад
+        </Button>
+        <span className="flex items-center px-4">Страница {page}</span>
+        <Button 
+          onClick={() => setPage(p => p + 1)}
+          disabled={loading}
+        >
+          Вперёд
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+### Кэширование данных (простой пример)
+
+Создайте файл `src/hooks/useCache.ts`:
+
+```tsx
+import { useState, useEffect } from 'react';
+
+export function useCachedFetch<T>(url: string, cacheKey: string) {
+  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const cached = localStorage.getItem(cacheKey);
+    
+    if (cached) {
+      setData(JSON.parse(cached));
+      setLoading(false);
+      return;
+    }
+
+    fetch(url)
+      .then(response => response.json())
+      .then(result => {
+        setData(result);
+        localStorage.setItem(cacheKey, JSON.stringify(result));
+        setLoading(false);
+      });
+  }, [url, cacheKey]);
+
+  return { data, loading };
+}
+```
+
+**Использование:**
+```tsx
+import { useCachedFetch } from '@/hooks/useCache';
+
+export default function CachedComponent() {
+  const { data, loading } = useCachedFetch<User[]>(
+    'https://jsonplaceholder.typicode.com/users',
+    'users-cache'
+  );
+
+  if (loading) return <div>Загрузка...</div>;
+  
+  return <div>{/* Отображение данных */}</div>;
+}
+```
+
+### Советы по работе с API:
+
+1. **Всегда обрабатывайте ошибки** - используйте try/catch
+2. **Показывайте состояние загрузки** - добавляйте loading индикаторы
+3. **Используйте TypeScript типы** - определяйте интерфейсы для данных
+4. **Debounce для поиска** - избегайте лишних запросов
+5. **Кэшируйте данные** - используйте localStorage для часто запрашиваемых данных
+6. **Backend функции** - проверяйте URL в `func2url.json`
+7. **CORS**: При работе с backend всегда используйте кастомные заголовки (`X-User-Id`, `X-Auth-Token`)
+
 ---
 
 Создано с помощью [poehali.dev](https://poehali.dev) - разработка сайтов через русский язык ✨
